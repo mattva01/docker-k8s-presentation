@@ -1,0 +1,17 @@
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - webnet
+    environment:
+      - MOJO_REDIS_URL=redis://redis:6379
+  redis:
+    image: redis:latest
+    networks:
+      - webnet
+networks:
+  webnet:
